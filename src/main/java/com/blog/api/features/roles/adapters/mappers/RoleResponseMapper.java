@@ -3,8 +3,6 @@ package com.blog.api.features.roles.adapters.mappers;
 import com.blog.api.features.roles.adapters.dtos.RoleResponseDTO;
 import com.blog.api.features.roles.domain.Role;
 
-import java.util.Optional;
-
 public class RoleResponseMapper {
     public static RoleResponseDTO role_response_mapper (Role role) {
         RoleResponseDTO dto = new RoleResponseDTO();

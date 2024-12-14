@@ -1,4 +1,4 @@
-package com.blog.api.root.config.role;
+package com.blog.api.root.config.roles;
 
 import com.blog.api.features.roles.adapters.repositories.bridges.RoleOutRepositoryBridge;
 import com.blog.api.features.roles.application.services.RoleServices;

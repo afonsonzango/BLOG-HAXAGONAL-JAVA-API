@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface inRolePort {
     List<RoleResponseDTO>   getAllRoles();
     RoleResponseDTO         getRoleById(Long id);
-    Optional<List<Role>> getRoleByName(String name);
+    Optional<List<Role>>    getRoleByName(String name);
     RoleResponseDTO         createNewRole(RoleRequestDTO role);
     RoleResponseDTO         updateExistingRole(Long id, RoleRequestDTO roleRequestDTO);
     void                    deleteRoleById(Long id);
