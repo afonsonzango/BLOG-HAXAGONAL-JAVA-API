@@ -1,5 +1,4 @@
 package com.blog.api.features.roles.adapters.repositories.bridges;
-import com.blog.api.features.roles.adapters.dtos.RoleResponseDTO;
 import com.blog.api.features.roles.adapters.repositories.RoleRepository;
 import com.blog.api.features.roles.application.ports.out.outRolePort;
 import com.blog.api.features.roles.domain.Role;
@@ -32,7 +31,7 @@ public class RoleOutRepositoryBridge implements outRolePort {
         return roleRepository.save(role);
     }
 
-    public Optional<List<Role>> findByName(String name) {
+    public Optional<Role> findByName(String name) {
         return roleRepository.findByName(name);
     }
 

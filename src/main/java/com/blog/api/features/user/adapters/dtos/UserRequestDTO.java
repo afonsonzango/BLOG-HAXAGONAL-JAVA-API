@@ -2,13 +2,14 @@ package com.blog.api.features.user.adapters.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 
 public class UserRequestDTO {
     @NotBlank(message = "Nome nao pode estar vazio")
     @Length(min = 3, max = 100, message = "Nome deve ter entre 3 a 100 caracteres")
-    private String nome;
+    private String name;
 
     @NotBlank(message = "Email eh um campo obrigatorio")
     @Length(min = 6, max = 100, message = "Email deve ter entre 6 a 100 caracteres")
@@ -16,19 +17,19 @@ public class UserRequestDTO {
     private String email;
 
     @NotBlank(message = "Password eh um campo obrigatorio")
-    @Length(min = 8, max = 36, message = "Campo message deve ter entre 8 a 36 caracteres")
+    @Length(min = 8, max = 36, message = "Campo password deve ter entre 8 a 36 caracteres")
     private String password;
 
-    @NotBlank(message = "role_id eh um campo obrigatorio")
+    @NotNull(message = "role_id eh um campo obrigatorio")
     @Positive(message = "role_id invalido")
     private Long roleId;
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

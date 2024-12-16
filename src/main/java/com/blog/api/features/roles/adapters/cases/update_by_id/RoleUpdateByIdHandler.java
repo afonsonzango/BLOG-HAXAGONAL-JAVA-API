@@ -1,4 +1,4 @@
-package com.blog.api.features.roles.adapters.cases.update;
+package com.blog.api.features.roles.adapters.cases.update_by_id;
 
 import com.blog.api.features.roles.adapters.cases.RoleControllers;
 import com.blog.api.features.roles.adapters.dtos.RoleRequestDTO;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UpdateHandler extends RoleControllers {
+public class RoleUpdateByIdHandler extends RoleControllers {
     private final RoleServices roleServices;
 
-    public UpdateHandler (RoleServices roleServices) {
+    public RoleUpdateByIdHandler(RoleServices roleServices) {
         this.roleServices = roleServices;
     }
 

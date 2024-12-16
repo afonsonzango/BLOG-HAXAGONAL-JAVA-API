@@ -1,17 +1,19 @@
 package com.blog.api.features.roles.adapters.dtos;
 
 import com.blog.api.features.user.domain.User;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RoleResponseDTO {
     private Long id;
     private UUID uuid;
     private String name;
-    private Optional<List<User>> users = Optional.empty();
+    private Optional<List<User>> users;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 

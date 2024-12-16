@@ -4,5 +4,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("S{api.version}/users")
+@RequestMapping("${api.version}/users")
 public abstract class UserControllers { }

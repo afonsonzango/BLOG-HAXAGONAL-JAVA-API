@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class FindAllHandler extends RoleControllers {
+public class RoleFindAllHandler extends RoleControllers {
     private final RoleServices roleServices;
 
-    public FindAllHandler(RoleServices roleServices) {
+    public RoleFindAllHandler(RoleServices roleServices) {
         this.roleServices = roleServices;
     }
 

@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FindByIdHandler extends RoleControllers {
+public class RoleFindByIdHandler extends RoleControllers {
     private final RoleServices roleServices;
 
-    public FindByIdHandler (RoleServices roleServices) {
+    public RoleFindByIdHandler(RoleServices roleServices) {
         this.roleServices = roleServices;
     }
 

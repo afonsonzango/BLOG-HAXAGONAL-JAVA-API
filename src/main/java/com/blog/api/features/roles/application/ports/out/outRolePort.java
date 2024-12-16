@@ -9,6 +9,6 @@ public interface outRolePort {
     List<Role>              findAll();
     Optional<Role>          findById(Long id);
     Role                    save(Role role);
-    Optional<List<Role>>    findByName(String name);
+    Optional<Role>          findByName(String name);
     void                    deleteById(Long id);
 }

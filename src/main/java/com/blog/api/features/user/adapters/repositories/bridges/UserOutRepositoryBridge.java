@@ -34,8 +34,13 @@ public class UserOutRepositoryBridge implements outUserPort {
     }
 
     @Override
-    public Optional<List<User>> findByName(String name) {
+    public Optional<User> findByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override

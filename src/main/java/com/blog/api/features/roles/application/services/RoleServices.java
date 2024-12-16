@@ -8,7 +8,6 @@ import com.blog.api.features.roles.application.ports.in.inRolePort;
 import com.blog.api.features.roles.domain.Role;
 import jakarta.persistence.EntityNotFoundException;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,14 +37,12 @@ public class RoleServices implements inRolePort {
     }
 
     @Override
-    public Optional<List<Role>> getRoleByName(String name) {
-        return roleOutRepositoryBridge
-                .findByName(name);
+    public Optional<Role> getRoleByName(String name) {
+        return roleOutRepositoryBridge.findByName(name);
     }
 
     @Override
     public RoleResponseDTO createNewRole(RoleRequestDTO roleRequestDTO) {
-
         Role role = new Role();
         role.setName(roleRequestDTO.getName());
 
@@ -60,13 +57,9 @@ public class RoleServices implements inRolePort {
                 .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Role não encontrado"));
 
-        List<Role> roleByName = roleOutRepositoryBridge.findByName(roleRequestDTO.getName()).orElse(Collections.emptyList());
+        Optional<Role> roleByName = roleOutRepositoryBridge.findByName(roleRequestDTO.getName());
 
-        boolean duplicatedExists = roleByName
-                .stream()
-                .anyMatch(existingRole -> !existingRole.getId().equals(id));
-
-        if (duplicatedExists) {
+        if (roleByName.isPresent() && !roleByName.get().getId().equals(role.getId())) {
             throw new RuntimeException("Já existe um role com esse nome");
         }
 

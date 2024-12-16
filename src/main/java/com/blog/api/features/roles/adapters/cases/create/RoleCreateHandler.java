@@ -12,21 +12,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class CreateHandler extends RoleControllers {
+public class RoleCreateHandler extends RoleControllers {
     private final RoleServices roleServices;
 
-    public CreateHandler(RoleServices roleServices) { this.roleServices = roleServices; }
+    public RoleCreateHandler(RoleServices roleServices) { this.roleServices = roleServices; }
 
     @PostMapping("/create")
     public APIResponseDTO<RoleResponseDTO> handler (@Valid @RequestBody RoleRequestDTO roleRequestDTO) {
         try {
-            Optional<List<Role>> roleByName = roleServices.getRoleByName(roleRequestDTO.getName());
+            Optional<Role> roleByName = roleServices.getRoleByName(roleRequestDTO.getName());
 
-            if (roleByName.isPresent() && !roleByName.get().isEmpty()) {
+            if (roleByName.isPresent() && roleByName.get().getName().equals(roleRequestDTO.getName())) {
                 return new APIResponseDTO<>(true, HttpStatus.CONFLICT, "Role que tentou cadastrar já existe", null);
             }
 

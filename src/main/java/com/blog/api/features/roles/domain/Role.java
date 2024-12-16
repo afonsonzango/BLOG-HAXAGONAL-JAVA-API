@@ -1,6 +1,5 @@
 package com.blog.api.features.roles.domain;
 
-import com.blog.api.features.roles.adapters.dtos.RoleResponseDTO;
 import jakarta.persistence.*;
 import com.blog.api.features.user.domain.User;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,7 +25,7 @@ public class Role {
         this.uuid = UUID.randomUUID();
     }
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)

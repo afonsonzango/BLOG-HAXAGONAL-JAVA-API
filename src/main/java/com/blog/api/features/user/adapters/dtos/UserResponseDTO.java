@@ -17,12 +17,11 @@ public class UserResponseDTO {
     private String email;
     private String password;
     private Role role;
-    private Optional<List<Reaction>> reactions;
-    private Optional<List<Post>> posts;
-    private Optional<List<Comment>> comments;
+    private Optional<List<Reaction>> reactions = Optional.empty();
+    private Optional<List<Post>> posts = Optional.empty();
+    private Optional<List<Comment>> comments = Optional.empty();
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
-
 
     public UserResponseDTO () {}
 
@@ -92,24 +91,24 @@ public class UserResponseDTO {
         return reactions;
     }
 
-    public void setReactions(Optional<List<Reaction>> reactions) {
-        this.reactions = reactions;
+    public void setReactions(List<Reaction> reactions) {
+        this.reactions = Optional.ofNullable(reactions);
     }
 
     public Optional<List<Post>> getPosts() {
         return posts;
     }
 
-    public void setPosts(Optional<List<Post>> posts) {
-        this.posts = posts;
+    public void setPosts(List<Post> posts) {
+        this.posts = Optional.ofNullable(posts);
     }
 
     public Optional<List<Comment>> getComments() {
         return comments;
     }
 
-    public void setComments(Optional<List<Comment>> comments) {
-        this.comments = comments;
+    public void setComments(List<Comment> comments) {
+        this.comments = Optional.ofNullable(comments);
     }
 
     public LocalDateTime getCreated_at() {

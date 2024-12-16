@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -28,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -40,6 +39,15 @@ public class User {
             this.uuid = UUID.randomUUID();
         }
 
+        hashPassword();
+    }
+
+    @PreUpdate
+    protected void prepareForUpdate() {
+        hashPassword();
+    }
+
+    private void hashPassword() {
         if (password != null && !password.startsWith("$2a$")) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             this.password = encoder.encode(password);
@@ -51,13 +59,13 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Optional<List<Reaction>> reactions;
+    private List<Reaction> reactions;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Optional<List<Post>> posts;
+    private List<Post> posts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Optional<List<Comment>> comments;
+    private List<Comment> comments;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
@@ -69,7 +77,7 @@ public class User {
 
     public User() { }
 
-    public User(Long id, UUID uuid, String name, String email, String password, Role role, Optional<List<Reaction>> reactions, Optional<List<Post>> posts, Optional<List<Comment>> comments, LocalDateTime created_at, LocalDateTime updated_at) {
+    public User(Long id, UUID uuid, String name, String email, String password, Role role, List<Reaction> reactions, List<Post> posts, List<Comment> comments, LocalDateTime created_at, LocalDateTime updated_at) {
         this.id = id;
         this.uuid = uuid;
         this.name = name;
@@ -131,27 +139,27 @@ public class User {
         this.role = role;
     }
 
-    public Optional<List<Reaction>> getReactions() {
+    public List<Reaction> getReactions() {
         return reactions;
     }
 
-    public void setReactions(Optional<List<Reaction>> reactions) {
+    public void setReactions(List<Reaction> reactions) {
         this.reactions = reactions;
     }
 
-    public Optional<List<Post>> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Optional<List<Post>> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 
-    public Optional<List<Comment>> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Optional<List<Comment>> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 

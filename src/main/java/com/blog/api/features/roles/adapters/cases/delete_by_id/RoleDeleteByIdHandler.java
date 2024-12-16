@@ -1,4 +1,4 @@
-package com.blog.api.features.roles.adapters.cases.delete;
+package com.blog.api.features.roles.adapters.cases.delete_by_id;
 
 import com.blog.api.features.roles.adapters.cases.RoleControllers;
 import com.blog.api.features.roles.application.services.RoleServices;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DeleteHandler extends RoleControllers {
+public class RoleDeleteByIdHandler extends RoleControllers {
     private final RoleServices roleServices;
 
-    public DeleteHandler (RoleServices roleServices) {
+    public RoleDeleteByIdHandler(RoleServices roleServices) {
         this.roleServices = roleServices;
     }
 

@@ -9,6 +9,7 @@ public interface outUserPort {
     List<User>              findAll();
     Optional<User>          findById(Long id);
     User                    save(User user);
-    Optional<List<User>>    findByName(String name);
+    Optional<User>          findByName(String name);
+    Optional<User>          findByEmail(String email);
     void                    deleteById(Long id);
 }
