@@ -1,7 +1,6 @@
 package com.blog.api.features.reaction.domain;
 
 import com.blog.api.features.comment.domain.Comment;
-import lombok.*;
 import jakarta.persistence.*;
 import com.blog.api.features.post.domain.Post;
 import com.blog.api.features.user.domain.User;
@@ -11,12 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "reactions")
 public class Reaction {
@@ -51,4 +44,72 @@ public class Reaction {
 
     @UpdateTimestamp
     private LocalDateTime updated_at;
+
+    public Reaction() { }
+
+    public Reaction(Long id, UUID uuid, Post post, User user, Comment comment, LocalDateTime created_at, LocalDateTime updated_at) {
+        this.id = id;
+        this.uuid = uuid;
+        this.post = post;
+        this.user = user;
+        this.comment = comment;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    public LocalDateTime getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
+    }
 }

@@ -12,6 +12,6 @@ public interface inUserPort {
     Optional<UserResponseDTO>   getUserByName(String name);
     Optional<UserResponseDTO>   getUserByEmail(String email);
     UserResponseDTO             createNewUser(UserRequestDTO user);
-    UserResponseDTO              updateExistingUser(Long id, UserRequestDTO user);
+    UserResponseDTO             updateExistingUser(Long id, UserRequestDTO user);
     void                        deleteUserById(Long id);
 }

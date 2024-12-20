@@ -26,22 +26,22 @@ public class UserServices implements inUserPort {
 
     @Override
     public List<UserResponseDTO> getAllUsers() {
-        return userOutRepositoryBridge.findAll().stream().map(UserResponseMapper::user_response_mapper).toList();
+        return userOutRepositoryBridge.findAll().stream().map(UserResponseMapper::userResponseMapper).toList();
     }
 
     @Override
     public UserResponseDTO getUserById(Long id) {
-        return userOutRepositoryBridge.findById(id).map(UserResponseMapper::user_response_mapper).orElseThrow(() -> new EntityNotFoundException("Usuario com este id nao encontrado"));
+        return userOutRepositoryBridge.findById(id).map(UserResponseMapper::userResponseMapper).orElseThrow(() -> new EntityNotFoundException("Usuario com este id nao encontrado"));
     }
 
     @Override
     public Optional<UserResponseDTO> getUserByName(String name) {
-        return userOutRepositoryBridge.findByName(name).map(UserResponseMapper::user_response_mapper);
+        return userOutRepositoryBridge.findByName(name).map(UserResponseMapper::userResponseMapper);
     }
 
     @Override
     public Optional<UserResponseDTO> getUserByEmail(String email) {
-        return userOutRepositoryBridge.findByEmail(email).map(UserResponseMapper::user_response_mapper);
+        return userOutRepositoryBridge.findByEmail(email).map(UserResponseMapper::userResponseMapper);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class UserServices implements inUserPort {
 
         User newSavedUser = userOutRepositoryBridge.save(newUser);
 
-        return UserResponseMapper.user_response_mapper(newSavedUser, Optional.of(true));
+        return UserResponseMapper.userResponseMapper(newSavedUser, Optional.of(true));
     }
 
     @Override
@@ -77,7 +77,7 @@ public class UserServices implements inUserPort {
         userToUpdate.setPassword(Objects.requireNonNullElse(userRequestDTO.getPassword(), userToUpdate.getPassword()));
         userToUpdate.setRole(Objects.requireNonNullElse(newRole, userToUpdate.getRole()));
 
-        return UserResponseMapper.user_response_mapper(userOutRepositoryBridge.save(userToUpdate), Optional.of(true));
+        return UserResponseMapper.userResponseMapper(userOutRepositoryBridge.save(userToUpdate), Optional.of(true));
     }
 
     @Override

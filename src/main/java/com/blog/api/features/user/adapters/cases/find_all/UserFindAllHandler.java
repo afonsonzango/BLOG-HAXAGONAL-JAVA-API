@@ -26,7 +26,7 @@ public class UserFindAllHandler extends UserControllers {
             List<UserResponseDTO> users = userOutRepositoryBridge
                     .findAll()
                     .stream()
-                    .map(user -> UserResponseMapper.user_response_mapper(user, Optional.of(true)))
+                    .map(user -> UserResponseMapper.userResponseMapper(user, Optional.of(true)))
                     .toList();
 
             if (users.isEmpty()) return new APIResponseDTO<>(false, HttpStatus.OK, "Nenhum ususario registrado no momento", null);

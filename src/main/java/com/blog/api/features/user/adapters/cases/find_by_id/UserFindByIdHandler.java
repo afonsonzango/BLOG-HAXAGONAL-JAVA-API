@@ -31,7 +31,7 @@ public class UserFindByIdHandler extends UserControllers {
             Long longedId = Long.parseLong(id);
             UserResponseDTO userById = userOutRepositoryBridge
                     .findById(longedId)
-                    .map((user) -> UserResponseMapper.user_response_mapper(user, Optional.of(true)))
+                    .map((user) -> UserResponseMapper.userResponseMapper(user, Optional.of(true)))
                     .orElseThrow(() -> new EntityNotFoundException("Usuario nao econtrado"));
 
             return new APIResponseDTO<>(false, HttpStatus.OK, "Usuario buscado com sucesso", userById);

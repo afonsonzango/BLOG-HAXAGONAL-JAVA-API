@@ -7,7 +7,10 @@ import com.blog.api.features.user.domain.User;
 import java.util.Optional;
 
 public class UserResponseMapper {
-    public static UserResponseDTO user_response_mapper (User user, Optional<Boolean> mapRoles) {
+
+    private UserResponseMapper() {}
+
+    public static UserResponseDTO userResponseMapper (User user, Optional<Boolean> mapRoles) {
         UserResponseDTO dto = new UserResponseDTO();
 
         dto.setId(user.getId());
@@ -35,7 +38,7 @@ public class UserResponseMapper {
         return dto;
     }
 
-    public static UserResponseDTO user_response_mapper (User user) {
-        return user_response_mapper(user, Optional.of(false));
+    public static UserResponseDTO userResponseMapper (User user) {
+        return userResponseMapper(user, Optional.of(false));
     }
 }
